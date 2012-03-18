@@ -1,10 +1,26 @@
-%form{:name => "login_form"}
-	%input{:type => "email", :name => "username", :placeholder => "email"}
-	%input{:type => "password", :name => "password"}
-	%input{:type => "checkbox", :name => "register", :value => "0"}
-	%input{:type => "submit", :value => "Login", :name => "do_login"}
-%script
-	$(function() {
-	$("form[name=login_form]").submit(login);
-	});
-	
+.row
+	.twocol
+	%article:{:class => "eightcol home_class"}
+		#stylized_form
+			%form{:name => "login_form"}
+				%h1 Log in or Sign up!
+				%p If you don't already have a passphrase, we'll create one for you.
+				%p
+					%label{:for => "username"} Email
+					%input{:type => "email", :name => "username", :placeholder => "email", :id => "username"}
+				
+				%p
+					%label{:for => "password"} Passphrase
+					%input{:type => "password", :name => "password", :id => "password"}
+				
+				%p
+					%label{:for => "register"} New user?
+					%input{:type => "checkbox", :name => "register", :value => "0", :id => "register"}
+				
+				%p
+					%input{:type => "submit", :value => "Login", :name => "do_login", :id => "login_button"}
+			%script
+				$(function() {
+				$("form[name=login_form]").submit(login);
+				});
+		

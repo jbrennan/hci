@@ -38,16 +38,31 @@ get '/logout' do
 end
 
 
+get '/about' do
+	"Enough about me, how about you?"
+end
+
+
 get '/protected' do
 	redirect "/login" if !$user
 	"It looks like you've got access!"
 end
 
 
+
+
 #########################
 # API
 #########################
 
+get '/api/phrase/suggest' do
+	return {
+		:phrase => "An example passphrase which is super secure!"
+	}.to_json
+end
+
+
+# User stuff
 post '/api/user/login' do
 	content_type 'application/json'
 
