@@ -1,0 +1,8 @@
+!!!5
+%html{:lang => "en"}
+	%head
+		%title= (@page_title != nil ? @page_title : "")
+		%script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"}
+		%script{:src => "/js/app.js"}
+	%body
+		= yield

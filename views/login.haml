@@ -1,0 +1,10 @@
+%form{:name => "login_form"}
+	%input{:type => "email", :name => "username", :placeholder => "email"}
+	%input{:type => "password", :name => "password"}
+	%input{:type => "checkbox", :name => "register", :value => "0"}
+	%input{:type => "submit", :value => "Login", :name => "do_login"}
+%script
+	$(function() {
+	$("form[name=login_form]").submit(login);
+	});
+	
