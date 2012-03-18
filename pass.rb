@@ -10,8 +10,8 @@ require 'models/user.rb'
 
 #erb stuff for models?
 DataMapper.finalize
-#DataMapper.setup(:default, 'postgres://localhost/everything_db') # more erb
-DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/db_everything.sqlite3")
+
+DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/db_pass.sqlite3")
 DataMapper.auto_upgrade!
 
 
@@ -126,7 +126,10 @@ post '/api/user/create' do
 end
 
 
-### Utilities
+
+#########################
+# Utilities
+#########################
 
 # Returns two values:
 # => auth token if the registration succeeds, otherwise nil

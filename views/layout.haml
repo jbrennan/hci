@@ -2,7 +2,34 @@
 %html{:lang => "en"}
 	%head
 		%title= (@page_title != nil ? @page_title : "")
+		
+		%meta{:charset => "utf-8"}
+		%meta{:name => "viewport", :content => "width=device-width, initial-scale = 1.0"}
+		
+		<!-- 1140px Grid styles for IE -->
+		<!--[if lte IE 9]><link rel="stylesheet" href="/styles/ie.css" type="text/css" media="screen" /><![endif]-->
+		
+		%link{:rel=>'stylesheet', :href=>'/styles/1140.css', :media => "screen"}
+		%link{:rel=>'stylesheet', :href=>'/styles/secure_tiger.css', :media => "screen"}
+		
 		%script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"}
 		%script{:src => "/js/app.js"}
 	%body
-		= yield
+		%section{:id => "mast", :class => "container"}
+			%header{:class => "row"}
+				.twocol
+				%a{:href => "/", :class => "mast_title fivecol"}
+					%div{:class => "mast_title_span"} PassLib
+				%nav{:class => "site_navigation threecol last"}
+					%ul{:class => "nav_list"}
+						%li
+							%a{:href => "/about"} About
+						%li
+							- if (@logged_in)
+								%a{:href => "javascript:void()", :onclick => "logout()"} Log out
+							- else
+								%a{:href => "/login"} Log In
+				.twocol
+		
+		%section{:id => "content", :class => "container"}
+			= yield
