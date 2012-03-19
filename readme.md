@@ -16,7 +16,8 @@ Installation
 2. You'll also need rubygems. If you've got ruby, you've probably also got this too.
 3. You'll also need sqlite3 installed. This is probably available for your system too.
 4. Then install the following gems. On OS X, `sudo` is required for the default install. I don't know about Linux (probably not)...
-		sudo gem install sinatra data_mapper json haml dm-sqlite-adapter
+	
+	sudo gem install sinatra data_mapper json haml dm-sqlite-adapter
 
 Then, change into the project directory and do `ruby pass.rb`. This will start up a little webserver running on port 4567 and you can check it out in the browser.
 
