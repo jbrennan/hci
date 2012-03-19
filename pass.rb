@@ -55,7 +55,11 @@ end
 # API
 #########################
 
+
+# Here's where we'd generate our passphrase to be shown for the user.
 get '/api/phrase/suggest' do
+	content_type 'application/json'
+	
 	return {
 		:phrase => "An example passphrase which is super secure!"
 	}.to_json
@@ -138,6 +142,18 @@ post '/api/user/create' do
 		}.to_json
 	end
 	
+end
+
+
+get '/api/user/exists' do
+	content_type 'application/json'
+	return {
+		:exists => true
+	}.to_json if user_already_exists(params[:username])
+	
+	return {
+		:exists => false
+	}.to_json
 end
 
 
