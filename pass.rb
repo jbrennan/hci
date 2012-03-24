@@ -28,6 +28,7 @@ end
 
 
 get '/login' do
+	redirect '/' if $user
 	haml :login
 end
 
@@ -46,6 +47,12 @@ end
 get '/protected' do
 	redirect "/login" if !$user
 	"It looks like you've got access!"
+end
+
+
+get '/phrase/test' do
+	@logged_in = true if $user
+	haml :phrase
 end
 
 

@@ -29,6 +29,9 @@
 								%a{:href => "javascript:void()", :onclick => "logout()"} Log out
 							- else
 								%a{:href => "/login"} Log In
+						- if (@logged_in)
+							%li
+								%a{:href => "/phrase/test"} Test
 				.twocol
 		
 		%section{:id => "content", :class => "container"}
