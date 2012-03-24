@@ -61,6 +61,7 @@ get '/api/phrase/suggest' do
 	content_type 'application/json'
 	
 	return {
+		:status => "OK",
 		:phrase => "An example passphrase which is super secure!"
 	}.to_json
 end
