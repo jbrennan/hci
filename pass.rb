@@ -7,6 +7,7 @@ require 'data_mapper'
 # require 'digest/md5'
 require 'util/pbkdf2.rb'
 require 'models/user.rb'
+require 'models/statistic.rb'
 
 #erb stuff for models?
 DataMapper.finalize
@@ -41,6 +42,40 @@ end
 
 get '/about' do
 	"Enough about me, how about you?"
+end
+
+
+get '/user/all' do
+	# Show a list of all users so we can view their stats
+	@users = User.all(:order => [:email.desc])
+	
+	haml :user_list
+end
+
+
+get '/user/stats/:user_id' do
+	# See the stats for a given user
+	redirect '/login' if !$user
+	
+	@user = User.first(:id => params[:user_id])
+	
+	return "We're sorry, but we can't find that user." if (nil == @user)
+	@stats = @user.statistics
+	haml :user_stats
+	
+end
+
+
+get '/user/stats' do
+	# See your own stats
+	redirect '/login' if !$user
+	###########################
+	# This will show stats to any user who is logged in, whether they're admin users or not
+	# Beware
+	###########################
+	
+	redirect "/user/stats/#{$user.id}"
+	
 end
 
 
@@ -89,6 +124,23 @@ post '/api/user/login' do
 	auth_token,api_secret = check_user_credentials(params[:username], params[:password])
 
 	if auth_token
+		
+		# Create a login statistic
+		stat = Statistic.create
+		stat.stat_name = "Logged In"
+		stat.sequence = 0
+		stat.success = true
+		stat.stat_date = DateTime.now
+		stat.stat_type = Statistic::StatTypeMainLogin
+		stat.duration = 0
+		stat.attempt_number = 0
+		
+		stat.user = get_user_by_email params[:username]
+		stat.save
+		
+		puts stat.to_s
+		puts stat.user.email.to_s
+		
 		return {
 			:status => "OK",
 			:auth_token => auth_token,
