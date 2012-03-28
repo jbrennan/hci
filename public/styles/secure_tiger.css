@@ -362,6 +362,52 @@ nav.site_navigation li a:hover, nav.site_navigation li a:active {
 	background-color: white;
 }
 
+/****************
+
+*****************/
+
+
+#stylized_test_form {
+	border-width : 2px;
+	border-style: solid;
+	border-radius: 4px;
+	border-color: #60c700;
+
+	padding: 1em;
+	margin: 0 auto;
+}
+
+#stylized_test_form label {
+	display: block;
+	font-weight: bold;
+	text-align: right;
+	float: left;
+	width: 8em;
+}
+
+
+#stylized_test_form input {
+	border-style: none;
+	border-bottom-width: 1px;
+	border-bottom-style: dashed;
+	border-bottom-color: black;
+	text-align: center;
+	
+	/*margin-left: 1em;*/
+	width: 10em;
+	font-size: 16px;
+
+}
+
+#stylized_test_form form {
+	background-color: white;
+}
+
+#stylized_test_form span {
+	border-bottom: 1px dashed black;
+	font-weight: bold;
+}
+
 
 
 /* ============================= */
