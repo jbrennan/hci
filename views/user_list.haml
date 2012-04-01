@@ -1,0 +1,8 @@
+- @users.each do |user|
+	.row
+		.twocol
+		%article:{:class => "eightcol home_class"}
+			%p
+				%a{:href => "/user/stats/#{user.id}"}= user.email
+	
+		%div{:class => "twocol last"}

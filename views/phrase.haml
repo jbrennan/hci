@@ -1,0 +1,44 @@
+.row
+	.twocol
+	%article:{:class => "eightcol home_class"}
+		%h1 Test your skills
+		%p
+			Here's where we'll get the user to attempt the various passwords and such (3 different ones).
+		#stylized_test_form
+			%form{:name => "login_form"}
+				%h1 Practice
+				%p Please enter each passphrase in the appropriate textbox.
+				
+				%p
+					Sometimes, a
+					%span noun
+					loves to
+					%span verb
+					lots of
+					%span adjective
+					%span nouns
+				%p
+					Sometimes, a 
+					%input{:type => "text", :name => "1a", :placeholder => "noun"}
+					loves to
+					%input{:type => "text", :name => "1b", :placeholder => "verb"}
+					lots of
+					%input{:type => "text", :name => "1c", :placeholder => "adjective"}
+					%input{:type => "text", :name => "1d", :placeholder => "nouns"}
+				
+				%p
+					%label{:for => "username"} Email
+					%input{:type => "email", :name => "username", :placeholder => "email", :id => "username"}
+				
+				%p
+					%label{:for => "password"} Passphrase
+					%input{:type => "password", :name => "password", :id => "password"}
+				
+				%p
+					%input{:type => "submit", :value => "Login", :name => "do_login", :id => "login_button"}
+			%script
+				$(function() {
+				$("form[name=login_form]").submit(login);
+				});
+
+	%div{:class => "twocol last"}

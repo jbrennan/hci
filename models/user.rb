@@ -1,4 +1,6 @@
 require 'data_mapper'
+require 'models/statistic.rb'
+
 
 class User
 	include DataMapper::Resource
@@ -11,4 +13,6 @@ class User
 	property :auth_token,	String
 	property :api_secret,	String
 	property :user_flags,	String #is admin, etc
+	
+	has n, :statistics
 end
