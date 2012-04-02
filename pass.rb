@@ -8,6 +8,7 @@ require 'data_mapper'
 require 'util/pbkdf2.rb'
 require 'models/user.rb'
 require 'models/statistic.rb'
+require 'models/word.rb'
 
 #erb stuff for models?
 DataMapper.finalize
@@ -88,6 +89,18 @@ end
 get '/phrase/test' do
 	@logged_in = true if $user
 	haml :phrase
+end
+
+
+get '/corpus/nouns' do
+	@words = Word.all
+	
+	string = ""
+	@words.each do |w|
+		string = string + w.word_name + "<br>"
+	end
+	
+	string
 end
 
 
