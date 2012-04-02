@@ -24,35 +24,71 @@ DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/db_pass.sqlite3")
 DataMapper.auto_upgrade!
 
 
+def process_and_save(synsets)
+	# process the array of synset hashes
+	synsets.each do |s|
+
+		puts "New word: " + s[:syn_name]
+		syn_pos = s[:pos]
+		#Create a word
+		word = Word.first_or_create(:word_name => s[:syn_name])
+		word.word_created_at = DateTime.now
+		word.word_pos = syn_pos
+		word.word_definition = s[:def]
+		word.save
+	end
+end
+
+
 # Iterate over all the nouns provided by the binder script, each object is a Synset defined bere:
 # http://nltk.github.com/api/nltk.corpus.reader.html?highlight=synset#nltk.corpus.reader.wordnet.Synset
 
 synsets = Array.new
-
 binder.wn_noun_iter.to_enum.each do |s|
 	
-	synsets << s
-	
-end
-
-
-# process the array of synsets
-synsets.each do |s|
 	syn_name = s.name.split(".")[0].to_s # throw out everything after the first dot
 	
 	next if (syn_name.include? "_") # just skip things with underscores... we only want 1 word
 	next if (syn_name.include? "-") # skip anything with a dash, too.
+	next if (syn_name.include? ".") # some things still appear to have more dots... skip them.
+	next if (syn_name.length < 4) # skip small words
 	
+	# I've had to use native ruby objects (i.e. Hash) here to avoid a blowing-up problem with RubyPython.
+	# My guess is under really heavy loads, something doesn't get garbage collected and the thing blows up.
+	syn = Hash.new
+	syn[:syn_name] = syn_name
+	syn[:pos] = s.pos.to_s
+	syn[:def] = s.definition.to_s
+	synsets << syn
 	
-	
-	puts "New word: " + syn_name
-	syn_pos = s.pos.to_s
-	# Create a word
-	# word = Word.first_or_create(:word_name => syn_name)
-	# word.word_created_at = DateTime.now
-	# word.word_pos = syn_pos
-	# word.word_definition = s.definition
-	# 
-	# 
-	# word.save
 end
+
+process_and_save(synsets)
+puts "Done. Onto the Verbs."
+
+synsets = Array.new
+
+binder.wn_verb_iter.to_enum.each do |s|
+	syn_name = s.name.split(".")[0].to_s # throw out everything after the first dot
+	
+	next if (syn_name.include? "_") # just skip things with underscores... we only want 1 word
+	next if (syn_name.include? "-") # skip anything with a dash, too.
+	next if (syn_name.include? ".") # some things still appear to have more dots... skip them.
+	next if (syn_name.length < 4) # skip small words
+	
+	# I've had to use native ruby objects (i.e. Hash) here to avoid a blowing-up problem with RubyPython.
+	# My guess is under really heavy loads, something doesn't get garbage collected and the thing blows up.
+	syn = Hash.new
+	syn[:syn_name] = syn_name
+	syn[:pos] = s.pos.to_s
+	syn[:def] = s.definition.to_s
+	synsets << syn
+end
+
+process_and_save(synsets)
+puts "Done processing Verbs."
+
+
+
+
+

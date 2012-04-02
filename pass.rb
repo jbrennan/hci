@@ -93,7 +93,7 @@ end
 
 
 get '/corpus/nouns' do
-	@words = Word.all
+	@words = Word.all(:word_pos => "n", :order => [:word_name.asc])
 	
 	string = ""
 	@words.each do |w|
