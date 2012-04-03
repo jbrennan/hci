@@ -10,12 +10,16 @@ require 'models/user.rb'
 require 'models/statistic.rb'
 require 'models/word.rb'
 
+
 #erb stuff for models?
 DataMapper.finalize
 
 DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/db_pass.sqlite3")
 DataMapper.auto_upgrade!
 
+enable :logging
+use Rack::CommonLogger #if logging breaks for you, re-enable it with this.. 
+#c.f.: https://github.com/sinatra/sinatra/issues/454
 
 before do
 	$user = nil
@@ -100,6 +104,18 @@ get '/corpus/nouns' do
 		string = string + w.word_name + "<br>"
 	end
 	
+	string
+end
+
+
+get '/corpus/:pos' do
+	@words = Word.all(:word_pos => params[:pos], :order => [:word_name.asc])
+
+	string = ""
+	@words.each do |w|
+		string = string + w.word_name + "<br>"
+	end
+
 	string
 end
 
@@ -227,6 +243,33 @@ get '/api/user/exists' do
 	return {
 		:exists => false
 	}.to_json
+end
+
+
+# Gets a random word of type :pos ("a" for adjective, "n" for noun, "v" for verb)
+get '/api/corpus/random/:pos' do
+	
+	content_type 'application/json'
+	
+	@words = Word.all(:word_pos => params[:pos], :order => [:word_name.asc])
+	return {
+		:status => "error",
+		:error => "No words in the corpus. Maybe an invalid point of speech or perhaps you need to generate it by running corpus_gen.rb"
+	}.to_json if @words.length < 1
+	
+	
+	word = @words[rand(@words.length)]
+	
+	return {
+		:status => "OK",
+		:word => {
+			:pos => params[:pos],
+			:name => word.word_name,
+			:definition => word.word_definition
+		}
+	}.to_json
+
+	
 end
 
 

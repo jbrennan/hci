@@ -12,3 +12,7 @@ def wn_noun_iter():
 def wn_verb_iter():
 	for synset in list(wn.all_synsets('v'))[:25000]:
 		yield synset
+
+def wn_iter(the_set):
+	for synset in list(wn.all_synsets(the_set))[:25000]:
+		yield synset
