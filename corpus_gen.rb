@@ -20,7 +20,7 @@ system.path.append('.')
 
 # setup datamapper
 DataMapper.finalize
-DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/db_pass.sqlite3")
+DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/wordnet.corpus")
 DataMapper.auto_upgrade!
 
 
