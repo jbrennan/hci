@@ -98,7 +98,9 @@ end
 
 
 get '/corpus/nouns' do
-	@words = Word.all(:word_pos => "n", :order => [:word_name.asc])
+	DataMapper.repository(:corpus) {
+		@words = Word.all(:word_pos => "n", :order => [:word_name.asc])
+	}
 	
 	string = ""
 	@words.each do |w|
@@ -110,7 +112,9 @@ end
 
 
 get '/corpus/:pos' do
-	@words = Word.all(:word_pos => params[:pos], :order => [:word_name.asc])
+	DataMapper.repository(:corpus) {
+		@words = Word.all(:word_pos => params[:pos], :order => [:word_name.asc])
+	}
 
 	string = ""
 	@words.each do |w|
