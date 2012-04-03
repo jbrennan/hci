@@ -15,6 +15,7 @@ require 'models/word.rb'
 DataMapper.finalize
 
 DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/db_pass.sqlite3")
+DataMapper.setup(:corpus, "sqlite3://#{Dir.pwd}/wordnet.corpus")
 DataMapper.auto_upgrade!
 
 enable :logging
@@ -125,6 +126,45 @@ end
 #########################
 # API
 #########################
+
+
+###################
+#
+# Word API
+#
+###################
+
+# Gets a random word of type :pos ("a" for adjective, "n" for noun, "v" for verb)
+get '/api/corpus/random/:pos' do
+
+	content_type 'application/json'
+	DataMapper.repository(:corpus) {
+		@words = Word.all(:word_pos => params[:pos], :order => [:word_name.asc])
+	}
+
+	return {
+		:status => "error",
+		:error => "No words in the corpus. Maybe an invalid point of speech or perhaps you need to generate it by running corpus_gen.rb"
+	}.to_json if @words.length < 1
+
+
+	word = @words[rand(@words.length)]
+
+	return {
+		:status => "OK",
+		:word => {
+			:pos => params[:pos],
+			:name => word.word_name,
+			:definition => word.word_definition
+		}
+	}.to_json
+end
+
+
+
+############
+# User API
+############
 
 
 # Here's where we'd generate our passphrase to be shown for the user.
@@ -246,31 +286,7 @@ get '/api/user/exists' do
 end
 
 
-# Gets a random word of type :pos ("a" for adjective, "n" for noun, "v" for verb)
-get '/api/corpus/random/:pos' do
-	
-	content_type 'application/json'
-	
-	@words = Word.all(:word_pos => params[:pos], :order => [:word_name.asc])
-	return {
-		:status => "error",
-		:error => "No words in the corpus. Maybe an invalid point of speech or perhaps you need to generate it by running corpus_gen.rb"
-	}.to_json if @words.length < 1
-	
-	
-	word = @words[rand(@words.length)]
-	
-	return {
-		:status => "OK",
-		:word => {
-			:pos => params[:pos],
-			:name => word.word_name,
-			:definition => word.word_definition
-		}
-	}.to_json
 
-	
-end
 
 
 
