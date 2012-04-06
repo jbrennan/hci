@@ -1,1 +1,4 @@
 *.sqlite3
+*.aux
+*.log
+report/*.pdf
