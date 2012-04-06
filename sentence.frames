@@ -1,0 +1,29 @@
+# Sentence frames for generating passwords. This is a tree structure. Successive
+# indentation indicates childhood. The part in square brackets is presented as
+# the blank; inside is the hint text. Words beginning with * are not shown in
+# hint text but are available to restrict the choice.
+# Blank lines and lines matching /^\s*#/ are ignored.
+# There should be at least 3 top-level frames (for the 3 kinds of sites).
+
+The [creature] ->
+    went to the [place] ->
+        with an angry [colour] ->
+            [professional].
+            [plant] in a pot.
+            spoonful of [food].
+        to [*transitive action verb] ->
+            its [noun].
+            the causal agent's [garment].
+        wearing a [garment]
+            but without doing any [human activity].
+    wanted to [*intransitive action verb] ->
+    will [*transitive action verb] ->
+    ate a [food] ->
+        on a [vehicle] ->
+            while it was [*intransitive action verb].
+        [adverb] ->
+            thinking it was a [food].
+            because it had [
+
+Yesterday, I wanted to [*transitive verb] ->
+    my [texture] ->
