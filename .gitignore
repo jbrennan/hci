@@ -3,3 +3,4 @@
 *.log
 report/*.pdf
 *.pyc
+*.swp
