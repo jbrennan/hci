@@ -8,6 +8,11 @@ import hashlib
 import json
 from nltk.corpus import wordnet as wn
 
+names = []
+with open('names.list', 'r') as f:
+    for l in f:
+        names.append(l.strip())
+
 class TreeNode():
     def __init__(self, value, parent=None):
         self.value = value
@@ -75,12 +80,10 @@ class Chunk():
         if match is None: raise ValueError(descriptor)
         self.pre = match.group(1)
         blank = match.group(2)
-        if blank in ('adverb', 'adjective') or blank.endswith('verb'):
-            self.descriptor = blank
-        else:
-            self.descriptor = blank + '.n.01'
+        self.descriptor = match.group(2)
         self.post = match.group(3)
         self.continued = (match.group(4) == ' ->')
+        self.pickclue()
         self.clue = match.group(2) #wn.synset(self.descriptor).lemmas[0].name
         self.word = None
 
@@ -88,9 +91,19 @@ class Chunk():
         return '<Chunk {0}[{1}={2}]{3}>'.format(self.pre, self.descriptor,
         self.word, self.post)
 
+    def pickclue(self):
+        if '=' in self.descriptor:
+            self.clue = self.descriptor.partition('=')[2]
+        elif '.n.' in self.descriptor:
+            self.clue = canonical_form(self.descriptor.partition('.n.')[0])
+        else:
+            self.clue = [x for x in self.descriptor.split(' ')
+                if not x.startswith('*')].join(' ')
+
     def pickword(self):
         try:
-            self.word = random.choice(list(passablewords(self.descriptor)))
+            self.word = canonical_form(
+                random.choice(list(passablewords(self.descriptor))))
         except: pass
 
     def to_json(self):
@@ -106,8 +119,13 @@ def passablewords(descriptor):
     if descriptor == 'adverb': return adverbs()
     if descriptor == 'adjective': return adjectives()
     if descriptor.endswith('verb'): return verbs(descriptor)
+    if descriptor == 'name': return names
     synset = wn.synset(descriptor)
     return lemma_names(hyponyms_trans(synset))
+
+def canonical_form(word):
+    # Return the form of a word for display to the user
+    return word.replace('_', ' ');
 
 def lemma_names(synsets):
     for s in synsets:
