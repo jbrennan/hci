@@ -12,9 +12,11 @@
     </span>
 <% end %>
 
-
 <p>Now try entering it:
-<p class='password-entry'>
-
+<form action='/<%= site %>/confirm' method='POST'>
+<p class='password entry'>
+<img src='/throbber.png' alt='loading...'>
+<input type='image' src='/next.png' alt='→' onclick='next(this); return false;'>
+</form>
 
 
