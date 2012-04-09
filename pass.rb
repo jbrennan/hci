@@ -9,6 +9,7 @@ require 'util/pbkdf2.rb'
 require 'models/user.rb'
 require 'models/statistic.rb'
 require 'models/word.rb'
+require 'rubypython'
 
 
 #erb stuff for models?
@@ -22,114 +23,63 @@ enable :logging
 use Rack::CommonLogger #if logging breaks for you, re-enable it with this.. 
 #c.f.: https://github.com/sinatra/sinatra/issues/454
 
-before do
-	$user = nil
-	authorize_user(request.cookies['auth'])
-end
+RubyPython.start
+RubyPython.import('sys').path.append('.')
+$generator = RubyPython.import 'generator'
+$generator.startup
+$passphrases = {}
 
+before do
+end
 
 get '/' do
-	@logged_in = true if $user
-	haml :index
+    send_file 'public/index.html'
 end
 
-
-get '/login' do
-	redirect '/' if $user
-	haml :login
+get '/:site/newaccount' do |site|
+    # Make a passphrase, then show it to the user
+    new_passphrase site
+    erb :newaccount, :layout => whichlayout(site)
 end
 
+get '/:site/login' do
+    # Ask the user to log in
+    erb :login, :layout => whichlayout(site)
 
-get '/logout' do
-	request.cookies['auth'] = nil
-	redirect '/'
 end
 
+post '/:site/login' do
+    # Check that the supplied password is right
+    erb :success, :layout => whichlayout(site)
 
-get '/about' do
-	"Enough about me, how about you?"
+    erb :failure, :layout => whichlayout(site)
 end
 
-
-get '/user/all' do
-	# Show a list of all users so we can view their stats
-	@users = User.all(:order => [:email.desc])
-	
-	haml :user_list
+def whichlayout(site)
+    { 'email' => :email,
+      'bank' => :bank,
+      'domesday' => :domesday
+    }[site]
 end
 
-
-get '/user/stats/:user_id' do
-	# See the stats for a given user
-	redirect '/login' if !$user
-	
-	@user = User.first(:id => params[:user_id])
-	
-	return "We're sorry, but we can't find that user." if (nil == @user)
-	@stats = @user.statistics
-	haml :user_stats
-	
+def new_passphrase(site)
+    $passphrases[site] = $generator.generate(tree site)
 end
 
-
-get '/user/stats' do
-	# See your own stats
-	redirect '/login' if !$user
-	###########################
-	# This will show stats to any user who is logged in, whether they're admin users or not
-	# Beware
-	###########################
-	
-	redirect "/user/stats/#{$user.id}"
-	
+def tree(site)
+    { 'email' => 0, 'bank' => 1, 'domesday' => 2 }[site]
 end
-
-
-get '/protected' do
-	redirect "/login" if !$user
-	"It looks like you've got access!"
-end
-
-
-get '/phrase/test' do
-	@logged_in = true if $user
-	haml :phrase
-end
-
-
-get '/corpus/nouns' do
-	DataMapper.repository(:corpus) {
-		@words = Word.all(:word_pos => "n", :order => [:word_name.asc])
-	}
-	
-	string = ""
-	@words.each do |w|
-		string = string + w.word_name + "<br>"
-	end
-	
-	string
-end
-
-
-get '/corpus/:pos' do
-	DataMapper.repository(:corpus) {
-		@words = Word.all(:word_pos => params[:pos], :order => [:word_name.asc])
-	}
-
-	string = ""
-	@words.each do |w|
-		string = string + w.word_name + "<br>"
-	end
-
-	string
-end
-
-
-
+    
 
 #########################
 # API
 #########################
+
+get '/:site/api/nextchunk/*' do |site,path|
+    words = path.split '/'
+    chunk = $generator.nextbranch(tree(site), words)
+    "#{chunk.to_json}"
+end
 
 
 ###################

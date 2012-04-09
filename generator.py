@@ -5,6 +5,7 @@ from __future__ import unicode_literals
 import re
 import random
 import hashlib
+import json
 from nltk.corpus import wordnet as wn
 
 class TreeNode():
@@ -43,6 +44,7 @@ def readtree():
     return root
 
 def generatephrase(tree):
+    # Return a list of Chunks following the sentence frame in tree.
     path = []
     while True:
         chunk = Chunk(tree.value)
@@ -56,7 +58,11 @@ def generatephrase(tree):
             return path
 
 def pickchild(word, children):
+    # Pick a child branch of the tree based on the previous word. Must be
+    # deterministic; should not be biased to any answer.
     # This is not good at all, but it'll do for the prototype...
+    # For the first word, there's only one child.
+    if word == None: return children[0]
     choice = ord(hashlib.md5(word).digest()[0]) % len(children)
     return children[choice]
 
@@ -66,6 +72,7 @@ class Chunk():
 
     def __init__(self, descriptor):
         match = self.pattern.match(descriptor)
+        if match is None: raise ValueError(descriptor)
         self.pre = match.group(1)
         if descriptor in ('adverb', 'adjective') or descriptor.endswith('verb'):
             self.descriptor = descriptor
@@ -84,6 +91,15 @@ class Chunk():
         try:
             self.word = random.choice(list(passablewords(self.descriptor)))
         except: pass
+
+    def to_json(self):
+        return json.dumps({
+            'pre': self.pre,
+            'clue': self.clue,
+            'word': self.word,
+            'post': self.post,
+            'last': not self.continued
+        })
 
 def passablewords(descriptor):
     if descriptor == 'adverb': return adverbs()
@@ -108,7 +124,27 @@ def adverbs():
 def adjectives():
     return wn.all_lemma_names('a')
 
-if __name__ == '__main__':
+# VERY PUBLIC INTERFACE
+
+def startup():
+    # Generate and discard a passphrase to load NLTK
     tree = readtree().children[0]
-    print(generatephrase(tree))
+    generatephrase(tree)
+
+def generate(which_tree):
+    # Return a list of Chunks
+    tree = readtree().children[which_tree]
+    return generatephrase(tree)
+
+def nextbranch(which_tree, words):
+    tree = readtree().children[which_tree]
+    for w in words:
+        tree = pickchild(w, tree.children)
+    return Chunk(tree.value)
+
+if __name__ == '__main__':
+    startup()
+    generate(0)
+    nextbranch(0, [])
+    nextbranch(0, ['horse'])
 
