@@ -5,95 +5,114 @@
 # Blank lines and lines matching /^\s*#/ are ignored.
 # There should be at least 3 top-level frames (for the 3 kinds of sites).
 
-The [creature] ->
-    went to the [place] ->
-        with an angry [colour] ->
-            [professional].
-            [plant] in a pot.
-            spoonful of [food].
+The [mammal.n.01] ->
+    went to the [building.n.01] ->
+        with an angry [colour.n.06] ->
+            [professional.n.01].
+            [flower.n.01] in a pot.
+            spoonful of [food.n.02].
         to [*transitive verb] ->
-            its [noun].
-            the causal agent's [garment].
-        wearing a [garment] ->
+            its [external body part.n.01].
+            the causal agent's [garment.n.01].
+        wearing a [garment.n.01] ->
             but without doing any [human activity].
     wanted to [*intransitive verb] ->
-        without eating [food]
+        without eating [food.n.02]
             too [adverb].
     will [*transitive verb] ->
         its [furniture].
-    ate a [food] ->
-        on a [vehicle] ->
+    ate a [food.n.02] ->
+        on a [vehicle.n.01] ->
             while it was [*intransitive verb].
         [adverb] ->
-            thinking it was a [food].
-            because it had [flavour].
+            thinking it was a [food.n.01].
+            because it had [ingredient.n.03].
 Yesterday, I wanted to [*transitive verb] ->
-    my [texture] ->
-        [clothing] ->
-            in my [location].
+    my [adjective] ->
+        [clothing.n.01] ->
+            in my [room.n.01].
             but I was busy [*intransitive verb].
-    my [vehicle] ->
+            after I returned from the nearby [building.n.01].
+        [mammal.n.01=pet] ->
+            so I decided to [*intransitive verb] very carefully.
+            but it was too [adjective].
+            along with my other [mammal.n.01=pet]
+        [food.n.02] ->
+            but it smelled like a rotten [food fish.n.01=fish].
+            but I was interrupted by a phone call from [name].
+            after I [*transitive verb] the neighbor's cat.
+    my [vehicle.n.01] ->
         but I couldn't [*transitive verb] ->
-            the [vehicle part/accessory].
-            because I [*instransitive verb].
+            the [tool.n.01].
+            it because I [*instransitive verb].
+            the [adjective] dashboard.
         but instead I [*intransitive verb] ->
             very [adverb].
+            while [name] watched.
+            because I was feeling [emotion.n.01].
+        because the new [adjective] seats ->
+            were covered with a small infestation of [rodent.n.01].
+            started to smell like rotten [food fish.n.01=fish].
+            had small [figure.n.06=shape]-shaped markings.
     [name]'s ->
-        old [toy] ->
-            because it was [texture].
-            because it was no longer [state of matter].
-        brand new [creature] ->
-            because it looked at me and said, "[fruit]".
-            in a [location].
+        old [toy.n.01] ->
+            because it was [adjective].
+            because it was no longer [adjective].
+            so I took it [adverb].
+        brand new [mammal.n.01] ->
+            because it looked at me and said, "[sound.n.04]".
+            in a [room.n.01].
             [adverb].
-    the local [institution] ->
+    a nearby [building.n.01] ->
         with my friend, [name], ->
-            because it was [holiday].
-            because we used to do this in [town].
-        with a [tool] ->
-            because I was feeling very [emotion].
-            but I was stopped by a [profession].
-On the weekend, my [family member] ->
-    plays [game] ->
+            because it was [holiday.n.02].
+            because we used to do this in the old [geological formation.n.01].
+            but I forgot my [tool.n.01] at home.
+        with a [tool.n.01] ->
+            because I was feeling a lot of [emotion.n.01].
+            but I was stopped by a [professional.n.01].
+            so I borrowed one from my neighbor [name].
+On the weekend, my [relative.n.01] ->
+    plays [game.n.02] ->
         only to annoy [name] ->
             because it is [adjective].
             by purposefully ignoring to [*intransitive verb].
-        despite needing to complete [chore] ->
-            and participate in [activity].
+        despite needing to complete [work.n.01] ->
+            and participate in [recreation.n.01].
             very [adverb].
-    doesn't get to watch [TV show] ->
+    doesn't get to watch "My [weapon.n.01] and I" ->
         because it is too [adjective] ->
-            which results in perpetual [emotion].
+            which results in perpetual [emotion.n.01].
             and [adjective].
-        because of weekly [activitiy] ->
+        because of weekly [recreation.n.01] ->
             with [name].
-            through the local [institution].
-    always goes to the [institution] ->
+            with the nearby [building.n.01].
+    always goes to the [building.n.01] ->
         to diligently [*transitive verb] ->
-            the most beloved person in history, [famous person].
-            the dirtiest [vehicle].
-        if there is no more [ingredient] ->
-            in the [room in house].
-            left beside the [ingredient].
-If I could create a mythical creature, it would have the brave head of a [creature], ->
-    the butt of an uptight [creature], ->
-        and would love [food] ->
-            but only from [restaurant name].
-            that smelled like [plant].
-        and would smell like a glorious [flower] ->
-            in the middle of [month].
+            different types of [weapon.n.01].
+            the dirtiest [vehicle.n.01].
+        if there is no more [ingredient.n.03] ->
+            in the [room.n.01].
+            left beside the [ingredient.n.03].
+If I could create a mythical creature, it would have the [adjective] head of a tiger, ->
+    the [colour.n.06] butt of an uptight baboon, ->
+        and would love [food.n.02] ->
+            but only from the finest [restaurant.n.01].
+            that smelled like [flower.n.01].
+        and would smell like a glorious [flower.n.01] ->
+            in the middle of [season.n.01].
             dying [adverb].
-    the wings of a delicate [bird], ->
-        which it would use to fly to [country] ->
-            whenever it feels [emotion].
-            along with the cousin of the [bird].
-        and would primarily hunt [fish] ->
+    the wings of a delicate [bird.n.01], ->
+        which it would use to fly to the nearest [biome.b.01=animal habitat] ->
+            whenever it feels [emotion.n.01].
+            along with the cousin of the [bird.n.01].
+        and would primarily hunt [food fish.n.01=fish] ->
             using it's wings to distract the fish from [*intransitive verb].
-            by humming [famous tune].
-    the belly of a lounging [creature], ->
-        and would only eat [colour] ->
-            [fruit].
-            plants found in [country].
-        and would only blend into nearby [animal habitat] ->
-            if provoked by it's predator, the [creature].
-            to hunt it's prey, the [creature].
+            by humming [adverb].
+    the belly of a [adjective] sloth, ->
+        and would only eat [colour.n.06] ->
+            [edible fruit.n.01].
+            plants found in exotic [biome.b.01=animal habitat].
+        and would only blend into nearby [biome.b.01=animal habitat] ->
+            if provoked by it's predator, the [carnivore.n.01].
+            to hunt it's prey, the [food fish.n.01=fish].
