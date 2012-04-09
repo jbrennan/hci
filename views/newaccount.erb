@@ -1,0 +1,22 @@
+<h2>New Account</h2>
+
+<p>Pick a username.
+<p><input type='text' name='username'>
+<p>We&#8217;ve made up a password for you. Here it is:
+<p class='password assigned'>
+<% for chunk in $passphrases[site] %>
+    <span class='chunk'>
+    <%= chunk.pre %>
+    <span title='<%= chunk.clue %>'><%= chunk.word %></span>
+    <%= chunk.post %>
+    </span>
+<% end %>
+
+<p>Now try entering it:
+<form action='/<%= site %>/confirm' method='POST'>
+<p class='password entry'>
+<img src='/throbber.png' alt='loading...'>
+<input type='image' src='/next.png' alt='→' onclick='next(this); return false;'>
+</form>
+
+
