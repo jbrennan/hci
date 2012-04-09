@@ -15,7 +15,7 @@ The [mammal.n.01] ->
             its [external body part.n.01].
             the causal agent's [garment.n.01].
         wearing a [garment.n.01] ->
-            but without doing any [human activity].
+            but without doing any [*intransitive verb].
     wanted to [*intransitive verb] ->
         without eating [food.n.02]
             too [adverb].
@@ -25,7 +25,7 @@ The [mammal.n.01] ->
         on a [vehicle.n.01] ->
             while it was [*intransitive verb].
         [adverb] ->
-            thinking it was a [food.n.01].
+            thinking it was a [food.n.02].
             because it had [ingredient.n.03].
 Yesterday, I wanted to [*transitive verb] ->
     my [adjective] ->
@@ -63,6 +63,10 @@ Yesterday, I wanted to [*transitive verb] ->
             because it looked at me and said, "[sound.n.04]".
             in a [room.n.01].
             [adverb].
+		delicious [food.n.02] ->
+			but I was feeing a lot of [emotion.n.01].
+			by secretly adding some [ingredient.n.03].
+			because it looked [adjective].
     a nearby [building.n.01] ->
         with my friend, [name], ->
             because it was [holiday.n.02].
@@ -72,6 +76,8 @@ Yesterday, I wanted to [*transitive verb] ->
             because I was feeling a lot of [emotion.n.01].
             but I was stopped by a [professional.n.01].
             so I borrowed one from my neighbor [name].
+		so I brough my biggest [vehicle.n.01] ->
+			to [*transitive verb] the locals.
 On the weekend, my [relative.n.01] ->
     plays [game.n.02] ->
         only to annoy [name] ->
