@@ -74,10 +74,11 @@ class Chunk():
         match = self.pattern.match(descriptor)
         if match is None: raise ValueError(descriptor)
         self.pre = match.group(1)
-        if descriptor in ('adverb', 'adjective') or descriptor.endswith('verb'):
-            self.descriptor = descriptor
+        blank = match.group(2)
+        if blank in ('adverb', 'adjective') or blank.endswith('verb'):
+            self.descriptor = blank
         else:
-            self.descriptor = match.group(2) + '.n.01'
+            self.descriptor = blank + '.n.01'
         self.post = match.group(3)
         self.continued = (match.group(4) == ' ->')
         self.clue = match.group(2) #wn.synset(self.descriptor).lemmas[0].name
@@ -143,8 +144,6 @@ def nextbranch(which_tree, words):
     return Chunk(tree.value)
 
 if __name__ == '__main__':
-    startup()
-    generate(0)
-    nextbranch(0, [])
-    nextbranch(0, ['horse'])
+    import pdb; pdb.set_trace()
+    print(generate(0))
 
