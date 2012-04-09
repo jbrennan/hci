@@ -36,10 +36,18 @@ get '/' do
     send_file 'public/index.html'
 end
 
+get '/password.js' do
+    send_file 'public/password.js'
+end
+
+get '/password.css' do
+    send_file 'public/password.css'
+end
+
 get '/:site/newaccount' do |site|
     # Make a passphrase, then show it to the user
     new_passphrase site
-    erb :newaccount, :layout => whichlayout(site)
+    erb :newaccount, :layout => whichlayout(site), :locals => { :site => site }
 end
 
 get '/:site/login' do
@@ -63,7 +71,7 @@ def whichlayout(site)
 end
 
 def new_passphrase(site)
-    $passphrases[site] = $generator.generate(tree site)
+    $passphrases[site] = $generator.generate(tree site).to_a
 end
 
 def tree(site)

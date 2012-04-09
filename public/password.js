@@ -1,74 +1,3 @@
-<!doctype html>
-<meta charset='UTF-8'>
-<title>JAPJ Password Test</title>
-
-<style type='text/css'>
-.password input[type=text] {
-    border: none;
-    border-bottom: 1px solid #666;
-    font-family: sans-serif;
-    width: 10em;
-}
-
-.chunk span { position: relative; }
-.chunk span::before {
-    position: absolute;
-    top: 110%;
-    display: inline-block;
-    width: 100%;
-    text-align: center;
-    content: attr(title);
-    font-family: sans-serif;
-    font-size: 75%;
-    color: gray;
-}
-
-.password img, .password input[type=image] {
-    height: 16px;
-    width: 16px;
-    display: inline-block;
-}
-
-.chunk {
-    -moz-animation-duration: 0.5s;
-    -moz-animation-name: addchunk;
-    position: relative;
-}
-
-.chunk:first-child {
-    -moz-animation-duration: 0s;
-}
-
-@-moz-keyframes addchunk {
-    from {
-        opacity: 0;
-        left: -15em;
-    }
-
-    to {
-        opacity: 1;
-        left: 0;
-    }
-}
-
-</style>
-
-
-<h1>${appname}</h1>
-<p>Log in to your ${appname} account:
-<form method='POST'>
-<p>Username: <input type='text' name='user' required>
-<p>The password gnome told me:
-<p class='password'><span class='chunk'>
-        The <span title='creature'>
-            <input type='text' name='blank' required>
-            </span>
-    </span>
-<input id=x type='image' src='next.png' alt='→' onclick='return next(this)'></p>
-
-</form>
-
-<script type='application/javascript'>
 function next(tail) {
     // tail is the next/submit button (or throbber)
     var input = tail.previousElementSibling.firstElementChild.firstElementChild;
@@ -112,6 +41,4 @@ function nextchunk(parent, data) {
     tail.removeAttribute('disabled');
     blank.focus();
 }
-
-</script>
 
