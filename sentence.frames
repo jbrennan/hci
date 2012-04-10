@@ -5,28 +5,28 @@
 # Blank lines and lines matching /^\s*#/ are ignored.
 # There should be at least 3 top-level frames (for the 3 kinds of sites).
 
-The [mammal.n.01] ->
-    went to the [building.n.01] ->
-        with an angry [colour.n.06] ->
-            [professional.n.01].
-            [flower.n.01] in a pot.
-            spoonful of [food.n.02].
-        to [*transitive verb] ->
-            its [external body part.n.01].
-            the causal agent's [garment.n.01].
-        wearing a [garment.n.01] ->
-            but without doing any [*intransitive verb].
-    wanted to [*intransitive verb] ->
-        without eating [food.n.02] ->
-            too [adverb].
-    will [*transitive verb] ->
-        its [furniture].
-    ate a [food.n.02] ->
-        on a [vehicle.n.01] ->
-            while it was [*intransitive verb].
-        [adverb] ->
-            thinking it was a [food.n.02].
-            because it had [ingredient.n.03].
+#The [mammal.n.01] ->
+#    went to the [building.n.01] ->
+#        with an angry [colour.n.06] ->
+#            [professional.n.01].
+#            [flower.n.01] in a pot.
+#            spoonful of [food.n.02].
+#        to [*transitive verb] ->
+#            its [external body part.n.01].
+#            the causal agent's [garment.n.01].
+#        wearing a [garment.n.01] ->
+#            but without doing any [*intransitive verb].
+#    wanted to [*intransitive verb] ->
+#        without eating [food.n.02] ->
+#            too [adverb].
+#    will [*transitive verb] ->
+#        its [furniture].
+#    ate a [food.n.02] ->
+#        on a [vehicle.n.01] ->
+#            while it was [*intransitive verb].
+#        [adverb] ->
+#            thinking it was a [food.n.02].
+#            because it had [ingredient.n.03].
 Yesterday, I wanted to [*transitive verb] ->
     my [adjective] ->
         [clothing.n.01] ->
@@ -38,7 +38,7 @@ Yesterday, I wanted to [*transitive verb] ->
             but it was too [adjective].
             along with my other [mammal.n.01=pet]
         [food.n.02] ->
-            but it smelled like a rotten [food fish.n.01=fish].
+            but it smelled like a rotten [food_fish.n.01=fish].
             but I was interrupted by a phone call from [name].
             after I [*transitive verb] the neighbor's cat.
     my [vehicle.n.01] ->
@@ -52,7 +52,7 @@ Yesterday, I wanted to [*transitive verb] ->
             because I was feeling [emotion.n.01].
         because the new [adjective] seats ->
             were covered with a small infestation of [rodent.n.01].
-            started to smell like rotten [food fish.n.01=fish].
+            started to smell like rotten [food_fish.n.01=fish].
             had small [figure.n.06=shape]-shaped markings.
     [name]'s ->
         old [toy.n.01] ->
@@ -70,7 +70,7 @@ Yesterday, I wanted to [*transitive verb] ->
     a nearby [building.n.01] ->
         with my friend, [name], ->
             because it was [holiday.n.02].
-            because we used to do this in the old [geological formation.n.01].
+            because we used to do this in the old [geological_formation.n.01].
             but I forgot my [tool.n.01] at home.
         with a [tool.n.01] ->
             because I was feeling a lot of [emotion.n.01].
@@ -93,7 +93,7 @@ On the weekend, my [relative.n.01] ->
         tournaments at the local [building.n.01] ->
             and donates the winnings to raise awareness for [cancer.n.01].
             because it is [adjective].
-            because of the free [alcoholic beverage.n.01].
+            because of the free [alcoholic_beverage.n.01].
     doesn't get to watch "My [weapon.n.01] and I" ->
         because it is too [adjective] ->
             which results in perpetual [emotion.n.01].
@@ -116,7 +116,7 @@ On the weekend, my [relative.n.01] ->
             in the [room.n.01].
             left beside the [ingredient.n.03].
             left to make the weekly [food.n.02].
-        to play a heartwarming [musical composition.n.01] ->
+        to play a heartwarming [musical_composition.n.01] ->
             on the [instrument.n.06].
             with [name].
             for a stray [bird.n.01].
@@ -138,23 +138,23 @@ If I could create a mythical creature, it would have the [adjective] head of a t
         which it would use to fly to the nearest [biome.b.01=animal habitat] ->
             whenever it feels [emotion.n.01].
             along with the cousin of the [bird.n.01].
-            to eat some [edible fruit.n.01].
+            to eat some [edible_fruit.n.01].
         and would primarily hunt [food fish.n.01=fish] ->
             using it's wings to distract the fish from [*intransitive verb].
             by humming [adverb].
             in secluded [biome.b.01=animal habitat].
         and would sound like [sound.n.04] ->
             by flapping its wings [advereb].
-            due to the [food fish.n.01=fish] it eats.
+            due to the [food_fish.n.01=fish] it eats.
             when you tickle its feet with a soft [rock.n.02].
     the belly of a [adjective] sloth, ->
         and would only eat [colour.n.06] ->
-            [edible fruit.n.01].
+            [edible_fruit.n.01].
             plants found in exotic [biome.b.01=animal habitat].
-            Wild [food fish.n.01=fish].
+            Wild [food_fish.n.01=fish].
         and would only blend into a nearby [biome.b.01=animal habitat] ->
             if provoked by it's predator, the [carnivore.n.01].
-            to hunt it's prey, the [food fish.n.01=fish].
+            to hunt it's prey, the [food_fish.n.01=fish].
             if the weather were to change from sunny to [weather.n.01].
         and would sleep under the foliage of a [tree.n.01] ->
             when there is [weather.n.01].
