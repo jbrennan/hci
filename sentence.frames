@@ -36,7 +36,7 @@ Yesterday, I wanted to [*transitive verb] ->
         [mammal.n.01=pet] ->
             so I decided to [*intransitive verb] very carefully.
             but it was too [adjective].
-            along with my other [mammal.n.01=pet]
+            along with my other [mammal.n.01=pet].
         [food.n.02] ->
             but it smelled like a rotten [food_fish.n.01=fish].
             but I was interrupted by a phone call from [name].
@@ -135,24 +135,24 @@ If I could create a mythical creature, it would have the [adjective] head of a t
             if it steps on a [rock.n.02].
             when eating [food.n.02].
     the wings of a delicate [bird.n.01], ->
-        which it would use to fly to the nearest [biome.b.01=animal habitat] ->
+        which it would use to fly to the nearest [biome.n.01=animal habitat] ->
             whenever it feels [emotion.n.01].
             along with the cousin of the [bird.n.01].
             to eat some [edible_fruit.n.01].
-        and would primarily hunt [food fish.n.01=fish] ->
+        and would primarily hunt [food_fish.n.01=fish] ->
             using it's wings to distract the fish from [*intransitive verb].
             by humming [adverb].
-            in secluded [biome.b.01=animal habitat].
+            in secluded [biome.n.01=animal habitat].
         and would sound like [sound.n.04] ->
-            by flapping its wings [advereb].
+            by flapping its wings [adverb].
             due to the [food_fish.n.01=fish] it eats.
             when you tickle its feet with a soft [rock.n.02].
     the belly of a [adjective] sloth, ->
         and would only eat [colour.n.06] ->
             [edible_fruit.n.01].
-            plants found in exotic [biome.b.01=animal habitat].
+            plants found in exotic [biome.n.01=animal habitat].
             Wild [food_fish.n.01=fish].
-        and would only blend into a nearby [biome.b.01=animal habitat] ->
+        and would only blend into a nearby [biome.n.01=animal habitat] ->
             if provoked by it's predator, the [carnivore.n.01].
             to hunt it's prey, the [food_fish.n.01=fish].
             if the weather were to change from sunny to [weather.n.01].
