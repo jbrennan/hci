@@ -7,7 +7,7 @@
 
 #The [mammal.n.01] ->
 #    went to the [building.n.01] ->
-#        with an angry [colour.n.06] ->
+#        with an angry [colour.n.01] ->
 #            [professional.n.01].
 #            [flower.n.01] in a pot.
 #            spoonful of [food.n.02].
@@ -31,7 +31,7 @@ Yesterday, I wanted to [*transitive verb] ->
     my [adjective] ->
         [clothing.n.01] ->
             in my [room.n.01].
-            but I was busy [*intransitive verb].
+            but I was busy with all of the things I had to [*intransitive verb].
             after I returned from the nearby [building.n.01].
         [mammal.n.01=pet] ->
             so I decided to [*intransitive verb] very carefully.
@@ -40,13 +40,13 @@ Yesterday, I wanted to [*transitive verb] ->
         [food.n.02] ->
             but it smelled like a rotten [food_fish.n.01=fish].
             but I was interrupted by a phone call from [name].
-            after I [*transitive verb] the neighbor's cat.
+            because its what I do after I [*transitive verb] the neighbor's cat.
     my [vehicle.n.01] ->
         but I couldn't [*transitive verb] ->
             the [tool.n.01].
-            it because I [*instransitive verb].
+            it because I wouldn't [*instransitive verb].
             the [adjective] dashboard.
-        but instead I [*intransitive verb] ->
+        but instead I decided to [*intransitive verb] ->
             very [adverb].
             while [name] watched.
             because I was feeling [emotion.n.01].
@@ -84,14 +84,14 @@ On the weekend, my [relative.n.01] ->
     plays [game.n.02] ->
         only to annoy [name] ->
             because it is [adjective].
-            by purposefully ignoring to [*intransitive verb].
+            by purposely ignoring to [*intransitive verb].
             and get free [food.n.02].
         despite needing to complete [work.n.01] ->
             and participate in [recreation.n.01].
             very [adverb].
             for our boss, [name].
         tournaments at the local [building.n.01] ->
-            and donates the winnings to raise awareness for [cancer.n.01].
+            and donates the winnings to raise awareness for [disease.n.01].
             because it is [adjective].
             because of the free [alcoholic_beverage.n.01].
     doesn't get to watch "My [weapon.n.01] and I" ->
@@ -121,11 +121,11 @@ On the weekend, my [relative.n.01] ->
             with [name].
             for a stray [bird.n.01].
 If I could create a mythical creature, it would have the [adjective] head of a tiger, ->
-    the [colour.n.06] butt of an uptight baboon, ->
+    the [colour.n.01] butt of an uptight baboon, ->
         and would love [food.n.02] ->
             but only from the finest [restaurant.n.01].
             that smelled like [flower.n.01].
-            after [*intransitive verb].
+            but would hate to [*intransitive verb].
         and would smell like a glorious [flower.n.01] ->
             in the middle of [season.n.01].
             dying [adverb].
@@ -140,7 +140,7 @@ If I could create a mythical creature, it would have the [adjective] head of a t
             along with the cousin of the [bird.n.01].
             to eat some [edible_fruit.n.01].
         and would primarily hunt [food_fish.n.01=fish] ->
-            using it's wings to distract the fish from [*intransitive verb].
+            using its wings to [*transitive verb] the fish.
             by humming [adverb].
             in secluded [biome.n.01=animal habitat].
         and would sound like [sound.n.04] ->
@@ -148,7 +148,7 @@ If I could create a mythical creature, it would have the [adjective] head of a t
             due to the [food_fish.n.01=fish] it eats.
             when you tickle its feet with a soft [rock.n.02].
     the belly of a [adjective] sloth, ->
-        and would only eat [colour.n.06] ->
+        and would only eat [colour.n.01] ->
             [edible_fruit.n.01].
             plants found in exotic [biome.n.01=animal habitat].
             Wild [food_fish.n.01=fish].
@@ -159,4 +159,4 @@ If I could create a mythical creature, it would have the [adjective] head of a t
         and would sleep under the foliage of a [tree.n.01] ->
             when there is [weather.n.01].
             after [*intransitive verb].
-            so its mate could [*transitive verb] food.
+            so its mate could [*transitive verb] the food.
