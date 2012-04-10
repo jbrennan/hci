@@ -125,7 +125,12 @@ def passablewords(descriptor):
     if descriptor.endswith('verb'): return verbs(descriptor)
     if descriptor == 'name': return names
     # else it's a noun
-    synset = wn.synset(descriptor)
+    lookup = descriptor.partition('=')[0]
+    try:
+        synset = wn.synset(lookup)
+    except:
+        print(lookup)
+        raise
     return lemma_names(hyponyms_trans(synset))
 
 def canonical_form(word):
@@ -160,20 +165,14 @@ def count(tree):
     chunk = Chunk(tree.value)
 
     if tree.children:
-        try:
-            tree.value = (len(list(passablewords(chunk.descriptor))) /
+        tree.value = (len(list(passablewords(chunk.descriptor))) /
                 len(tree.children))
-        except:
-            tree.value = 0
         rv = []
         for c in tree.children:
             rv.extend(count(c))
         return rv
     else:
-        try:
-            tree.value = len(list(passablewords(chunk.descriptor)))
-        except:
-            tree.value = 0
+        tree.value = len(list(passablewords(chunk.descriptor)))
 
         total = tree.value
         node = tree.parent
