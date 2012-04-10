@@ -62,17 +62,27 @@ get '/:site/newaccount' do |site|
     erb :newaccount, :layout => whichlayout(site), :locals => { :site => site }
 end
 
-get '/:site/login' do
+get '/:site/login' do |site|
     # Ask the user to log in
-    erb :login, :layout => whichlayout(site)
-
+    erb :login, :layout => whichlayout(site), :locals => { :site => site }
 end
 
-post '/:site/login' do
+post '/:site/login' do |site|
     # Check that the supplied password is right
-    erb :success, :layout => whichlayout(site)
+    success = true
+    i = 0
+    for chunk in $passphrases[site]
+        if chunk.word.to_s.casecmp(params["word" + i.to_s]) != 0
+            success = false
+        end
+        i += 1
+    end
 
-    erb :failure, :layout => whichlayout(site)
+    if success
+        erb :success, :layout => whichlayout(site), :locals => { :site => site }
+    else
+        erb :failure, :layout => whichlayout(site), :locals => { :site => site }
+    end
 end
 
 def whichlayout(site)

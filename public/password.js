@@ -2,10 +2,13 @@ $(document).ready(function () {
     start()
 });
 
+var count = 0;
+
 function start() {
     $.getJSON('/' + site() + '/api/nextchunk/', function (data) {
         $('.password.entry img').css('display', 'none');
-        var name = 'word0';
+        var name = 'word' + count;
+        count += 1;
         var chunk = "<span class='chunk'>$pre<span title='$clue'>" +
             "<input type='text' name='$name'></span>$post</span>";
         chunk = chunk.replace('$pre', data.pre).replace('$clue', data.clue)
@@ -34,7 +37,8 @@ function next(tail) {
 
     $.getJSON('/' + site() + '/api/nextchunk/' + words, function (data) {
         $('.password.entry img').css('display', 'none');
-        var name = 'word0';
+        var name = 'word' + count;
+        count += 1;
         var chunk = "<span class='chunk'>$pre<span title='$clue'>" +
             "<input type='text' name='$name'></span>$post</span>";
         chunk = chunk.replace('$pre', data.pre).replace('$clue', data.clue)
@@ -47,5 +51,11 @@ function next(tail) {
                 "<input type='submit' value='Log In'>");
         }
     });
+}
+
+function form_cleanup() {
+    // Before submitting the form, reenable the input boxes so they get
+    // submitted.
+    $('.password input[type="text"]').attr('disabled', false);
 }
 

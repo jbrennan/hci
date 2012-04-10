@@ -12,11 +12,45 @@
     </span>
 <% end %>
 
+<script type='application/javascript'>
+function done() {
+    var assigned = [];
+    var entered = [];
+    $('.password.assigned .chunk span').each(function (i, elem) {
+        assigned.push($(elem).text());
+    });
+    $('.password.entry .chunk input[type="text"]').each(function (i, elem) {
+        entered.push($(elem).val());
+    });
+    var equal = true;
+    for (var i = 0; i < assigned.length; i++) {
+        if (assigned[i] != entered[i]) {
+            equal = false;
+        }
+    }
+    
+    if (equal) {
+        $('#success').css('display', 'block');
+    } else {
+        alert("Oops. That's not the right password. Try again.");
+    }
+    $('.password.entry > .chunk').remove();
+    $('.password.entry input[type="submit"]').replaceWith(
+        "<input type='image' src='/next.png' alt='→' " +
+        "onclick='next(this); return false;'>")
+    start();
+}
+</script>
+
 <p>Now try entering it:
-<form action='/<%= site %>/confirm' method='POST'>
+<form onsubmit='done(); return false' method='POST'>
 <p class='password entry'>
 <img src='/throbber.png' alt='loading...'>
 <input type='image' src='/next.png' alt='→' onclick='next(this); return false;'>
 </form>
 
+
+<p style='margin-top: 2em; display: none;' id='success'>
+Great! If you want, you can practice more. When you think you've learned the
+password, go back to the <a href='/'>main page</a>.
 

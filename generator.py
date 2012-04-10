@@ -13,6 +13,11 @@ with open('names.list', 'r') as f:
     for l in f:
         names.append(l.strip())
 
+spellcheck = set()
+with open('spellcheck.20') as f:
+    for l in f:
+        spellcheck.add(l.strip())
+
 class TreeNode():
     def __init__(self, value, parent=None):
         self.value = value
@@ -79,12 +84,10 @@ class Chunk():
         match = self.pattern.match(descriptor)
         if match is None: raise ValueError(descriptor)
         self.pre = match.group(1)
-        blank = match.group(2)
         self.descriptor = match.group(2)
         self.post = match.group(3)
         self.continued = (match.group(4) == ' ->')
         self.pickclue()
-        self.clue = match.group(2) #wn.synset(self.descriptor).lemmas[0].name
         self.word = None
 
     def __repr__(self):
@@ -92,13 +95,14 @@ class Chunk():
         self.word, self.post)
 
     def pickclue(self):
+        #wn.synset(self.descriptor).lemmas[0].name
         if '=' in self.descriptor:
             self.clue = self.descriptor.partition('=')[2]
         elif '.n.' in self.descriptor:
             self.clue = canonical_form(self.descriptor.partition('.n.')[0])
         else:
-            self.clue = [x for x in self.descriptor.split(' ')
-                if not x.startswith('*')].join(' ')
+            self.clue = ' '.join([x for x in self.descriptor.split(' ')
+                if not x.startswith('*')])
 
     def pickword(self):
         try:
@@ -120,6 +124,7 @@ def passablewords(descriptor):
     if descriptor == 'adjective': return adjectives()
     if descriptor.endswith('verb'): return verbs(descriptor)
     if descriptor == 'name': return names
+    # else it's a noun
     synset = wn.synset(descriptor)
     return lemma_names(hyponyms_trans(synset))
 
@@ -130,20 +135,55 @@ def canonical_form(word):
 def lemma_names(synsets):
     for s in synsets:
         for l in s.lemmas:
-            yield l.name
+            if l.name in spellcheck:
+                yield l.name
 
 def hyponyms_trans(root_synset):
     return root_synset.closure(lambda s: s.hyponyms())
 
 def verbs(descriptor):
-    return wn.all_lemma_names('v')
-
+    return spellcheck.intersection(wn.all_lemma_names('v'))
 def adverbs():
-    return wn.all_lemma_names('r')
+    return spellcheck.intersection(wn.all_lemma_names('r'))
 def adjectives():
-    return wn.all_lemma_names('a')
+    return spellcheck.intersection(wn.all_lemma_names('a'))
 
-# VERY PUBLIC INTERFACE
+# Counting the number of possible passwords
+
+def passwordcount():
+    tree = readtree()
+    for t in tree.children:
+        c = count(t)
+        print(sum(c) / len(c))
+
+def count(tree):
+    chunk = Chunk(tree.value)
+
+    if tree.children:
+        try:
+            tree.value = (len(list(passablewords(chunk.descriptor))) /
+                len(tree.children))
+        except:
+            tree.value = 0
+        rv = []
+        for c in tree.children:
+            rv.extend(count(c))
+        return rv
+    else:
+        try:
+            tree.value = len(list(passablewords(chunk.descriptor)))
+        except:
+            tree.value = 0
+
+        total = tree.value
+        node = tree.parent
+        while True:
+            total *= node.value
+            node = node.parent
+            if node.parent is None: break
+        return [total]
+
+# INTERFACE FOR RUBY
 
 def startup():
     # Generate and discard a passphrase to load NLTK
@@ -162,6 +202,7 @@ def nextbranch(which_tree, words):
     return Chunk(tree.value)
 
 if __name__ == '__main__':
-    import pdb; pdb.set_trace()
+    #import pdb; pdb.set_trace()
     print(generate(0))
+    passwordcount()
 

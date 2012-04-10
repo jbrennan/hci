@@ -1,0 +1,13 @@
+<h2>Log in</h2>
+
+<p>Enter your username:
+<p><input type='text' name='username'>
+
+<p>Enter your password:
+<form action='/<%= site %>/login' onsubmit='form_cleanup()' method='POST'>
+<p class='password entry'>
+<img src='/throbber.png' alt='loading...'>
+<input type='image' src='/next.png' alt='→' onclick='next(this); return false;'>
+</form>
+
+
