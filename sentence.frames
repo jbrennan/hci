@@ -15,7 +15,7 @@ The [mammal.n.01] ->
             its [external body part.n.01].
             the causal agent's [garment.n.01].
         wearing a [garment.n.01] ->
-            but without doing any [human activity].
+            but without doing any [*intransitive verb].
     wanted to [*intransitive verb] ->
         without eating [food.n.02] ->
             too [adverb].
@@ -25,7 +25,7 @@ The [mammal.n.01] ->
         on a [vehicle.n.01] ->
             while it was [*intransitive verb].
         [adverb] ->
-            thinking it was a [food.n.01].
+            thinking it was a [food.n.02].
             because it had [ingredient.n.03].
 Yesterday, I wanted to [*transitive verb] ->
     my [adjective] ->
@@ -63,6 +63,10 @@ Yesterday, I wanted to [*transitive verb] ->
             because it looked at me and said, "[sound.n.04]".
             in a [room.n.01].
             [adverb].
+        delicious [food.n.02] ->
+            but I was feeing a lot of [emotion.n.01].
+            by secretly adding some [ingredient.n.03].
+            because it looked [adjective].
     a nearby [building.n.01] ->
         with my friend, [name], ->
             because it was [holiday.n.02].
@@ -72,47 +76,87 @@ Yesterday, I wanted to [*transitive verb] ->
             because I was feeling a lot of [emotion.n.01].
             but I was stopped by a [professional.n.01].
             so I borrowed one from my neighbor [name].
+        so I brough my biggest [vehicle.n.01] ->
+            to [*transitive verb] the locals.
+            because [name] told me to.
+            with fresh [food.n.02] inside.
 On the weekend, my [relative.n.01] ->
     plays [game.n.02] ->
         only to annoy [name] ->
             because it is [adjective].
             by purposefully ignoring to [*intransitive verb].
+            and get free [food.n.02].
         despite needing to complete [work.n.01] ->
             and participate in [recreation.n.01].
             very [adverb].
+            for our boss, [name].
+        tournaments at the local [building.n.01] ->
+            and donates the winnings to raise awareness for [cancer.n.01].
+            because it is [adjective].
+            because of the free [alcoholic beverage.n.01].
     doesn't get to watch "My [weapon.n.01] and I" ->
         because it is too [adjective] ->
             which results in perpetual [emotion.n.01].
             and [adjective].
+            according to [name].
         because of weekly [recreation.n.01] ->
             with [name].
-            with the nearby [building.n.01].
+            at the nearby [building.n.01].
+            and dinner at [restaurant.n.01].
+        because the TV's settings prevent [adjective] content, ->
+            including [adjective] shows.
+            and cannot be changed because the remote went missing in the [room.n.01].
+            because the older TVs cannot process [adjective] scenes.
     always goes to the [building.n.01] ->
         to diligently [*transitive verb] ->
             different types of [weapon.n.01].
             the dirtiest [vehicle.n.01].
+            a rare [book.n.01].
         if there is no more [ingredient.n.03] ->
             in the [room.n.01].
             left beside the [ingredient.n.03].
+            left to make the weekly [food.n.02].
+        to play a heartwarming [musical composition.n.01] ->
+            on the [instrument.n.06].
+            with [name].
+            for a stray [bird.n.01].
 If I could create a mythical creature, it would have the [adjective] head of a tiger, ->
     the [colour.n.06] butt of an uptight baboon, ->
         and would love [food.n.02] ->
             but only from the finest [restaurant.n.01].
             that smelled like [flower.n.01].
+            after [*intransitive verb].
         and would smell like a glorious [flower.n.01] ->
             in the middle of [season.n.01].
             dying [adverb].
+            in [weather.n.01].
+        and would make a [noise.n.04] sound ->
+            when there is [weather.n.01].
+            if it steps on a [rock.n.02].
+            when eating [food.n.02].
     the wings of a delicate [bird.n.01], ->
         which it would use to fly to the nearest [biome.b.01=animal habitat] ->
             whenever it feels [emotion.n.01].
             along with the cousin of the [bird.n.01].
+            to eat some [edible fruit.n.01].
         and would primarily hunt [food fish.n.01=fish] ->
             using it's wings to distract the fish from [*intransitive verb].
             by humming [adverb].
+            in secluded [biome.b.01=animal habitat].
+        and would sound like [sound.n.04] ->
+            by flapping its wings [advereb].
+            due to the [food fish.n.01=fish] it eats.
+            when you tickle its feet with a soft [rock.n.02].
     the belly of a [adjective] sloth, ->
         and would only eat [colour.n.06] ->
             [edible fruit.n.01].
             plants found in exotic [biome.b.01=animal habitat].
-        and would only blend into nearby [biome.b.01=animal habitat] ->
+            Wild [food fish.n.01=fish].
+        and would only blend into a nearby [biome.b.01=animal habitat] ->
             if provoked by it's predator, the [carnivore.n.01].
             to hunt it's prey, the [food fish.n.01=fish].
+            if the weather were to change from sunny to [weather.n.01].
+        and would sleep under the foliage of a [tree.n.01] ->
+            when there is [weather.n.01].
+            after [*intransitive verb].
+            so its mate could [*transitive verb] food.
