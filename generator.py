@@ -105,10 +105,8 @@ class Chunk():
                 if not x.startswith('*')])
 
     def pickword(self):
-        try:
-            self.word = canonical_form(
+        self.word = canonical_form(
                 random.choice(list(passablewords(self.descriptor))))
-        except: pass
 
     def to_json(self):
         return json.dumps({
@@ -167,12 +165,16 @@ def count(tree):
     if tree.children:
         tree.value = (len(list(passablewords(chunk.descriptor))) /
                 len(tree.children))
+        if tree.value == 0:
+            raise Exception(chunk.descriptor)
         rv = []
         for c in tree.children:
             rv.extend(count(c))
         return rv
     else:
         tree.value = len(list(passablewords(chunk.descriptor)))
+        if tree.value == 0:
+            raise Exception(chunk.descriptor)
 
         total = tree.value
         node = tree.parent

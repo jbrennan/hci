@@ -40,7 +40,7 @@ function next(tail) {
         var name = 'word' + count;
         count += 1;
         var chunk = "<span class='chunk'>$pre<span title='$clue'>" +
-            "<input type='text' name='$name'></span>$post</span>";
+            "<input type='text' name='$name'></span>$post </span>";
         chunk = chunk.replace('$pre', data.pre).replace('$clue', data.clue)
             .replace('$post', data.post).replace('$name', name);
         $('.password.entry img').before(chunk);

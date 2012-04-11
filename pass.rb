@@ -79,8 +79,10 @@ post '/:site/login' do |site|
     end
 
     if success
+        logger.info "Successful login"
         erb :success, :layout => whichlayout(site), :locals => { :site => site }
     else
+        logger.info "Login failed"
         erb :failure, :layout => whichlayout(site), :locals => { :site => site }
     end
 end
